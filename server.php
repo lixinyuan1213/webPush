@@ -1,9 +1,9 @@
 <?php
 require "redis.php";
 $redis=new RedisModel();//redis中维护前台id和后台id的对应关系。
-$serv = new Swoole\Websocket\Server("11.11.11.15", 9505);
+$serv = new Swoole\Websocket\Server("0.0.0.0", 9505);
 $serv->on('Open', function($server, $req) {
-    echo "connection open: ".$req->fd;
+    //echo "connection open: ".$req->fd;//cli调试用，正式环境下不要用
 });
 $serv->on('Message', function($server, $frame) {
     $reqData=json_decode($frame->data,true);
