@@ -31,3 +31,14 @@ class sendMessage
 $sendModel=new sendMessage("ws://11.11.11.15:9505");
 $sendModel->send(array("message"=>"通知类","name"=>"管理员"));//发给所有的用户
 //$sendModel->send(array(array("message"=>"通知类","name"=>"管理员"),2);//发给id为2的用户（在redis中查询得到）
+
+/* 定时服务，只能以cli形式执行，不可以在apache里执行
+$timeId=swoole_timer_tick(1000*30, function ($timer_id) {
+    global $sendModel;
+    $sendModel->send(array("message"=>"30秒一次，发送信息","name"=>"管理员"));//发给所有的用户
+});
+swoole_timer_after(1000*60*5, function () {
+    global $timeId;
+    swoole_timer_clear($timeId);
+});
+*/
