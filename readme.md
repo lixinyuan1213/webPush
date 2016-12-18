@@ -9,3 +9,4 @@
 > * [swoole 1.9](http://www.swoole.com/)
 > * [Ubuntu14.4](https://www.ubuntu.com/download)
 > * [Websocket Client for PHP](https://github.com/Textalk/websocket-php)
+> * [monolog](https://github.com/Seldaek/monolog)
