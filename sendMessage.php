@@ -1,5 +1,7 @@
 <?php
 require('vendor/autoload.php');
+use Desarrolla2\Cache\Cache;
+use Desarrolla2\Cache\Adapter\Predis;
 use WebSocket\Client;
 /**
  * User: Administrator
@@ -30,7 +32,14 @@ class sendMessage
 }
 $sendModel=new sendMessage("ws://11.11.11.15:9505");
 $sendModel->send(array("message"=>"通知类","name"=>"管理员"));//发给所有的用户
-//$sendModel->send(array(array("message"=>"通知类","name"=>"管理员"),2);//发给id为2的用户（在redis中查询得到）
+/* 发给id为2的用户（在redis中查询得到）
+ * 使用第三方缓存类（redis）
+$adapter = new Predis();
+$cache = new Cache($adapter);
+//$cache->set("keyString","1111");
+$contectId=$cache->get("XXXX");
+$sendModel->send(array(array("message"=>"通知类","name"=>"管理员"),2));
+*/
 
 /* 定时服务，只能以cli形式执行，不可以在apache里执行
 $timeId=swoole_timer_tick(1000*30, function ($timer_id) {

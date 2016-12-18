@@ -7,17 +7,47 @@ namespace Composer\Autoload;
 class ComposerStaticInitf7aef8229a3ea84337b1eed174becb0e
 {
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'P' => 
         array (
-            'WebSocket\\' => 10,
+            'Psr\\Log\\' => 8,
+            'Predis\\' => 7,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
+        'D' => 
+        array (
+            'Desarrolla2\\Test\\Cache\\' => 23,
+            'Desarrolla2\\Cache\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WebSocket\\' => 
+        'Psr\\Log\\' => 
         array (
-            0 => __DIR__ . '/..' . '/textalk/websocket/lib',
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Predis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/predis/predis/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Desarrolla2\\Test\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/desarrolla2/cache/test',
+        ),
+        'Desarrolla2\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/desarrolla2/cache/src',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/App',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -25,6 +55,7 @@ class ComposerStaticInitf7aef8229a3ea84337b1eed174becb0e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf7aef8229a3ea84337b1eed174becb0e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf7aef8229a3ea84337b1eed174becb0e::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitf7aef8229a3ea84337b1eed174becb0e::$fallbackDirsPsr4;
 
         }, null, ClassLoader::class);
     }
